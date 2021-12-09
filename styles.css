@@ -1,4 +1,7 @@
-*, *::after, *::before {
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -13,6 +16,7 @@ body {
   margin: 0;
   background-color: var(--background-color);
   overflow: hidden;
+  font-family: 'Press Start 2P', cursive;
 }
 
 .paddle {
