@@ -1,5 +1,10 @@
 import Ball from './Ball.js'
 import Paddle from './Paddle.js'
+const status = {
+  PAUSED: -1,
+  PLAYING: 1,
+}
+
 export default class Game {
   constructor() {
     this.ball = new Ball(document.getElementById('ball'))
@@ -8,6 +13,9 @@ export default class Game {
     this.playerScoreElem = document.getElementById('player-score')
     this.computerScoreElem = document.getElementById('computer-score')
     this.startButtonElem = document.getElementById('start-button')
+    this.status = status.PAUSED
+    this.inputScreenElem = document.getElementById('input-screen')
+    this.lastTime = null
 
     this.startButtonElem.addEventListener('click', () => {
       this.start()
@@ -21,12 +29,21 @@ export default class Game {
 
   start = () => {
     this.startButtonElem.remove()
+    this.status = status.PLAYING
+    this.inputScreenElem.addEventListener('click', this.togglePause)
     window.requestAnimationFrame(this.update)
   }
 
-  update = (time) => {
-    window.requestAnimationFrame(this.update)
+  togglePause = () => {
+    this.status *= -1
   }
+
+  update = (time) => {
+    if (this.status === status.PAUSED) {
+      this.lastTime = null
+      window.requestAnimationFrame(this.update)
+      return
+    }
     if (this.lastTime != null) {
       const delta = time - this.lastTime
 
@@ -42,8 +59,11 @@ export default class Game {
 
       if (this.isLose()) this.handleLose()
     }
-    window.requestAnimationFrame(this.update)
-  }
+
+    if (this.status === status.PLAYING) {
+      this.lastTime = time
+      window.requestAnimationFrame(this.update)
+    }
   }
 
   isLose = () => {
