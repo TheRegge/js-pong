@@ -4,6 +4,8 @@ const VELOCITY_INCREASE = 0.00001
 export default class Ball {
   constructor(ballElem) {
     this.ballElem = ballElem
+    this.beep1 = [0.1, 250]
+    this.beep2 = [0.1, 550]
     this.reset()
   }
 
@@ -47,7 +49,9 @@ export default class Ball {
     this.velocity += VELOCITY_INCREASE * delta
     const rect = this.rect()
 
+      this.sound?.beep(...this.beep2)
     if (rect.bottom >= window.innerHeight || rect.top <= 0) {
+      this.sound?.beep(...this.beep1)
       this.direction.y *= -1
     }
 

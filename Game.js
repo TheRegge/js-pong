@@ -1,5 +1,7 @@
 import Ball from './Ball.js'
 import Paddle from './Paddle.js'
+import Sound from './Sound.js'
+
 const status = {
   PAUSED: -1,
   PLAYING: 1,
@@ -28,8 +30,10 @@ export default class Game {
   }
 
   start = () => {
+    this.audioContext = new AudioContext()
     this.startButtonElem.remove()
     this.status = status.PLAYING
+    this.ball.sound = new Sound(this.audioContext)
     this.inputScreenElem.addEventListener('click', this.togglePause)
     window.requestAnimationFrame(this.update)
   }
