@@ -49,14 +49,14 @@ export default class Ball {
     this.velocity += VELOCITY_INCREASE * delta
     const rect = this.rect()
 
+    if (paddleRects.some((r) => isCollision(r, rect))) {
       this.sound?.beep(...this.beep2)
+      this.direction.x *= -1
+      this.direction.y += Math.sin(Math.random() * 2 * Math.PI)
+    }
     if (rect.bottom >= window.innerHeight || rect.top <= 0) {
       this.sound?.beep(...this.beep1)
       this.direction.y *= -1
-    }
-
-    if (paddleRects.some(r => isCollision(r, rect))) {
-      this.direction.x *= -1
     }
   }
 }
