@@ -10,6 +10,7 @@
   --saturation: 50%;
   --foreground-color: hsl(var(--hue), var(--saturation), 75%);
   --background-color: hsl(var(--hue), var(--saturation), 20%);
+  --background-color-light: hsl(var(--hue), var(--saturation), 30%);
 }
 
 body {
@@ -69,5 +70,28 @@ body {
 
 .score > :first-child {
   text-align: right;
-  border-right: .5vh solid var(--foreground-color);
+
+button {
+  border: solid 1px var(--foreground-color);
+  font-size: 7vh;
+  padding: 3vh 6vh;
+  background-color: var(--background-color);
+  color: var(--foreground-color);
+  border-radius: 0.5vh;
+  font-family: 'Press Start 2P', cursive;
+}
+
+button:hover {
+  background-color: var(--background-color-light);
+  cursor: pointer;
+}
+
+button.start {
+  position: absolute;
+  top: 50vh;
+  left: 50vw;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
 }

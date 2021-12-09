@@ -7,6 +7,12 @@ export default class Game {
     this.computerPaddle = new Paddle(document.getElementById('computer-paddle'))
     this.playerScoreElem = document.getElementById('player-score')
     this.computerScoreElem = document.getElementById('computer-score')
+    this.startButtonElem = document.getElementById('start-button')
+
+    this.startButtonElem.addEventListener('click', () => {
+      this.start()
+    })
+
     document.addEventListener('mousemove', (e) => {
       if (this.status === status.PAUSED) return
       this.playerPaddle.position = (e.y / window.innerHeight) * 100
@@ -14,8 +20,10 @@ export default class Game {
   }
 
   start = () => {
+    this.startButtonElem.remove()
     window.requestAnimationFrame(this.update)
   }
+
   update = (time) => {
     window.requestAnimationFrame(this.update)
   }
