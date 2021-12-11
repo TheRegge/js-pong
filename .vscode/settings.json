@@ -1,4 +1,4 @@
 {
   "liveServer.settings.port": 5501,
-  "conventionalCommits.scopes": ["CSS", "JS", "UX"]
+  "conventionalCommits.scopes": ["CSS", "JS", "UX", "Build"]
 }

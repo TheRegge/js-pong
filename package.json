@@ -1,0 +1,29 @@
+{
+  "name": "js-pong",
+  "version": "1.0.0",
+  "description": "Retro Pong game forked from WebDevSimplified/js-pong",
+  "parcelCleanPaths": [
+		"dist"
+	],
+  "scripts": {
+    "start": "parcel src/index.html",
+    "build": "parcel build src/index.html --dist-dir dist",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "gh-pages -d dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheRegge/js-pong.git"
+  },
+  "author": "Regis Zaleman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TheRegge/js-pong/issues"
+  },
+  "homepage": "https://github.com/TheRegge/js-pong#readme",
+  "devDependencies": {
+    "gh-pages": "^3.2.3",
+    "parcel": "^2.0.1",
+    "parcel-plugin-clean-easy": "^1.0.2"
+  }
+}

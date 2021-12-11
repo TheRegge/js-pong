@@ -30,6 +30,7 @@ export default class Game {
   }
 
   start = () => {
+    console.log('start')
     this.audioContext = new AudioContext()
     this.startButtonElem.remove()
     this.status = status.PLAYING
